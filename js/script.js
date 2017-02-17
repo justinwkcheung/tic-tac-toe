@@ -1,6 +1,7 @@
 function checkTic(eventObject) {
   if ($('#box1').html() === "X" && $('#box2').html() === 'X' && $('#box3').html() === 'X') {
     window.alert('X WINS!')
+    // $('.box').empty();
   }
   else if ($('#box1').html() === "X" && $('#box4').html() === 'X' && $('#box7').html() === 'X') {
     window.alert('X WINS!')
@@ -52,9 +53,12 @@ function checkTic(eventObject) {
   }
 };
 
+
 $(document).on('ready', function() {
   $('.box').on('click', formLetter);
   $('.box').on('click', checkTic);
+  $('.clear button').on('click', clearBoard);
+
 
   var lastLetterX = false;
 
@@ -67,6 +71,11 @@ $(document).on('ready', function() {
       $(this).html('O').addClass('letter');
       lastLetterX = false;
     }
+  };
+
+  function clearBoard() {
+    $('.box').empty();
+    lastLetterX = false; 
   };
 
 });
